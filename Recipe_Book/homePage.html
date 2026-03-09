@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Recipe Book</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <a href="homePage.html" class="app-brand">
+            <img src="Logo.jpeg" alt="Logo" class="logo">
+            <h1>Recipe Book</h1>
+        </a>
+        <div class="header-search">
+            <svg class="header-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchInput" placeholder="Search recipes, ingredients..." onkeyup="searchRecipes()">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="filter-bar">
+            <div class="filter-tabs">
+                <div class="filter-tab active" onclick="filterRecipes('all', this)">All</div>
+                <div class="filter-tab" onclick="filterRecipes('breakfast', this)">Breakfast</div>
+                <div class="filter-tab" onclick="filterRecipes('lunch', this)">Lunch</div>
+                <div class="filter-tab" onclick="filterRecipes('dinner', this)">Dinner</div>
+            </div>
+            <a href="addRecipe.html" class="btn btn-primary">Add Recipe</a>
+        </div>
+
+        <div class="recipe-grid" id="recipeGrid">
+            <a href="recipe.html" class="recipe-card" data-category="breakfast">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Avocado Toast" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Classic Avocado Toast</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 15 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Breakfast</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="recipe.html" class="recipe-card" data-category="dinner">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=600&q=80" alt="Pasta" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Tomato Basil Pasta</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 45 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Dinner</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="recipe.html" class="recipe-card" data-category="dinner">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Grill" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Grilled Steak & Veggies</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 60 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Dinner</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="recipe.html" class="recipe-card" data-category="lunch">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80" alt="Healthy Bowl" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Quinoa Veggie Bowl</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 20 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Lunch</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="recipe.html" class="recipe-card" data-category="breakfast">
+                <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=600&q=80" alt="Pancakes" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Fluffy Buttermilk Pancakes</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 25 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Breakfast</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="recipe.html" class="recipe-card" data-category="lunch">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Salad" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Fresh Summer Salad</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 10 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Lunch</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Added 5 new items -->
+            <a href="recipe.html" class="recipe-card" data-category="breakfast">
+                <img src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=600&q=80" alt="Smoothie Bowl" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Berry Smoothie Bowl</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 5 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Breakfast</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="recipe.html" class="recipe-card" data-category="lunch">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Pizza" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Margherita Pizza</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 25 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Lunch</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="recipe.html" class="recipe-card" data-category="dinner">
+                <img src="https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=600&q=80" alt="Salmon" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Oven Baked Salmon</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 20 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Dinner</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="recipe.html" class="recipe-card" data-category="dinner">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Curry" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Chicken Tikka Masala</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 50 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Dinner</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="recipe.html" class="recipe-card" data-category="lunch">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Burger" class="recipe-image">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Classic Beef Burger</h3>
+                    <div class="recipe-meta">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 30 min</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> Lunch</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        function filterRecipes(category, element) {
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            // Clear search input when using tabs
+            document.getElementById('searchInput').value = '';
+            
+            // Filter cards
+            const cards = document.querySelectorAll('.recipe-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function searchRecipes() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.recipe-card');
+            
+            // Remove active state from filter tabs
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            // Optionally, select "All" tab visually without triggering filter
+            tabs[0].classList.add('active');
+
+            cards.forEach(card => {
+                const title = card.querySelector('.recipe-title').innerText.toLowerCase();
+                const category = card.getAttribute('data-category').toLowerCase();
+                
+                if (title.includes(searchInput) || category.includes(searchInput)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    </main>
+</body>
+</html>
