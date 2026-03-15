@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Recipe - Recipe Book</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="app-header">
         <a href="homePage.html" class="app-brand">
@@ -14,7 +18,11 @@
             <h1>Recipe Book</h1>
         </a>
         <div class="header-search">
-            <svg class="header-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <svg class="header-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
             <input type="text" placeholder="Search recipes, ingredients...">
         </div>
     </header>
@@ -23,15 +31,17 @@
         <div class="page-wrapper wide-form">
             <div class="page-header">
                 <h2>Add your recipe here</h2>
-                <p style="color: var(--text-muted);">Share your delicious creation with the community and inspire others.</p>
+                <p style="color: var(--text-muted);">Share your delicious creation with the community and inspire
+                    others.</p>
             </div>
-            
-            <form action="homePage.html" method="get">
+
+            <form action="homePage.html" method="get" onsubmit="validateRecipe(event)">
                 <div class="form-group">
                     <label for="recipeName">Recipe Name</label>
-                    <input type="text" id="recipeName" class="form-control" placeholder="E.g. Classic Beef Stew" required>
+                    <input type="text" id="recipeName" class="form-control" placeholder="E.g. Classic Beef Stew"
+                        required>
                 </div>
-                
+
                 <div style="display: flex; gap: 20px;">
                     <div class="form-group" style="flex: 1;">
                         <label for="recipeType">Recipe Type</label>
@@ -51,29 +61,61 @@
 
                 <div class="form-group">
                     <label for="ingredients">Ingredients</label>
-                    <textarea id="ingredients" class="form-control" placeholder="List your ingredients separated by new lines..."></textarea>
+                    <textarea id="ingredients" class="form-control"
+                        placeholder="List your ingredients separated by new lines..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="instructions">Instructions</label>
-                    <textarea id="instructions" class="form-control" style="min-height: 150px;" placeholder="Step by step instructions..."></textarea>
+                    <textarea id="instructions" class="form-control" style="min-height: 150px;"
+                        placeholder="Step by step instructions..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Media</label>
-                    <div class="file-upload-block">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 15px; color: var(--primary-color);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                        <p><strong>Click to Add Images / Videos</strong></p>
-                        <p style="font-size: 13px; margin-top: 5px;">Supports JPG, PNG, GIF, MP4 (Max 10MB)</p>
-                    </div>
+
+                    <input type="file" id="mediaUpload" class="form-control" accept="image/*" onchange="previewImage()">
+
+                    <img id="preview" style="max-width:200px;margin-top:10px;border-radius:10px;">
                 </div>
 
                 <div class="form-actions" style="margin-top: 40px;">
                     <a href="homePage.html" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary" style="padding-left: 40px; padding-right: 40px;">Publish on Page</button>
+                    <button type="submit" class="btn btn-primary"
+                        style="padding-left: 40px; padding-right: 40px;">Publish on Page</button>
                 </div>
             </form>
         </div>
     </main>
+    <script>
+        function validateRecipe(event) {
+
+            const name = document.getElementById("recipeName").value;
+            const duration = document.getElementById("duration").value;
+            const ingredients = document.getElementById("ingredients").value;
+            const instructions = document.getElementById("instructions").value;
+
+            if (name === "" || duration === "" || ingredients === "" || instructions === "") {
+                alert("Please complete all recipe fields");
+                event.preventDefault();
+            }
+        }
+
+        function previewImage() {
+
+            const file = document.getElementById("mediaUpload").files[0];
+            const preview = document.getElementById("preview");
+
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+    
 </body>
+
 </html>
