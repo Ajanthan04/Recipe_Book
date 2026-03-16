@@ -139,6 +139,161 @@
         </div>
     </main>
     <script>
+        const recipesData = {
+            "avocado-toast": {
+                title: "Classic Avocado Toast",
+                image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80",
+                time: "15 min",
+                category: "Breakfast",
+                serves: "Serves 2",
+                ingredients: ["2 slices of sourdough bread", "1 ripe avocado", "1/2 lemon, juiced", "Pinch of red pepper flakes", "Sea salt and black pepper", "Extra virgin olive oil", "1 Cherry tomato, quartered"],
+                instructions: ["<strong>Toast the bread:</strong> Place the sourdough slices in a toaster or on a pan and toast until golden and crispy.", "<strong>Mash the avocado:</strong> Cut the avocado in half, remove the pit, and scoop the flesh into a small bowl. Add the lemon juice, salt, and pepper. Mash with a fork.", "<strong>Assemble:</strong> Spread the mashed avocado evenly on the toasted sourdough slices.", "<strong>Garnish:</strong> Top with quartered cherry tomatoes, a pinch of red pepper flakes, and a drizzle of extra virgin olive oil if desired.", "<strong>Serve immediately:</strong> Enjoy your delicious and healthy avocado toast!"]
+            },
+            "tomato-pasta": {
+                title: "Tomato Basil Pasta",
+                image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=1200&q=80",
+                time: "45 min",
+                category: "Dinner",
+                serves: "Serves 4",
+                ingredients: ["1 lb pasta", "2 cups cherry tomatoes", "1/4 cup fresh basil leaves", "3 cloves garlic, minced", "1/4 cup olive oil", "Salt and pepper to taste", "Parmesan cheese (optional)"],
+                instructions: ["Boil water and cook pasta according to package instructions.", "In a large pan, heat olive oil and sauté minced garlic until fragrant.", "Add cherry tomatoes and cook until they burst.", "Toss the cooked pasta with the tomato sauce.", "Garnish with fresh basil and parmesan cheese before serving."]
+            },
+            "grilled-steak": {
+                title: "Grilled Steak & Veggies",
+                image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+                time: "60 min",
+                category: "Dinner",
+                serves: "Serves 2",
+                ingredients: ["2 thick steaks (Ribeye or Sirloin)", "1 zucchini, sliced", "1 bell pepper, sliced", "1 red onion, sliced", "2 tbsp olive oil", "Steak seasoning", "Salt and pepper"],
+                instructions: ["Preheat the grill to high heat.", "Season the steaks generously on both sides.", "Toss the vegetables in olive oil, salt, and pepper.", "Grill steaks for 4-5 minutes per side for medium-rare.", "Grill vegetables until tender and slightly charred.", "Let steaks rest for 5 minutes before slicing and serving with veggies."]
+            },
+            "quinoa-bowl": {
+                title: "Quinoa Veggie Bowl",
+                image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+                time: "20 min",
+                category: "Lunch",
+                serves: "Serves 2",
+                ingredients: ["1 cup quinoa", "2 cups water or vegetable broth", "1 cup roasted sweet potatoes", "1 cup kale, chopped", "1/2 cup black beans", "Avocado dressing", "Pumpkin seeds"],
+                instructions: ["Rinse quinoa and cook in water/broth until tender.", "Prepare roasted sweet potatoes and steam the kale.", "In a large bowl, assemble the quinoa base.", "Top with sweet potatoes, kale, and black beans.", "Drizzle with avocado dressing and sprinkle pumpkin seeds."]
+            },
+            "pancakes": {
+                title: "Fluffy Buttermilk Pancakes",
+                image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=1200&q=80",
+                time: "25 min",
+                category: "Breakfast",
+                serves: "Serves 4",
+                ingredients: ["2 cups all-purpose flour", "2 tsp baking powder", "1 tsp baking soda", "2 tbsp sugar", "2 cups buttermilk", "2 large eggs", "1/4 cup melted butter", "Maple syrup for serving"],
+                instructions: ["In a large bowl, whisk together the dry ingredients.", "In a separate bowl, whisk buttermilk, eggs, and melted butter.", "Pour the wet ingredients into the dry ingredients and mix until just combined.", "Heat a griddle or pan and pour 1/4 cup of batter for each pancake.", "Cook until bubbles form, flip, and cook until golden brown.", "Serve hot with maple syrup and butter."]
+            },
+            "summer-salad": {
+                title: "Fresh Summer Salad",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80",
+                time: "10 min",
+                category: "Lunch",
+                serves: "Serves 2",
+                ingredients: ["4 cups mixed greens", "1 cup sliced strawberries", "1/2 cup blueberries", "1/4 cup feta cheese crumbles", "1/4 cup candied pecans", "Balsamic vinaigrette"],
+                instructions: ["Wash and dry the mixed greens thoroughly.", "In a large bowl, combine the greens, strawberries, and blueberries.", "Sprinkle feta cheese and candied pecans over the top.", "Drizzle with balsamic vinaigrette right before serving.", "Toss gently and serve immediately."]
+            },
+            "smoothie-bowl": {
+                title: "Berry Smoothie Bowl",
+                image: "https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=1200&q=80",
+                time: "5 min",
+                category: "Breakfast",
+                serves: "Serves 1",
+                ingredients: ["1 cup frozen mixed berries", "1/2 frozen banana", "1/2 cup almond milk", "1 tbsp chia seeds", "Fresh berries for topping", "Granola for topping", "Coconut flakes"],
+                instructions: ["Add frozen berries, banana, and almond milk to a blender.", "Blend until smooth and very thick.", "Pour the smoothie into a bowl.", "Arrange fresh berries in a line on top.", "Add granola and coconut flakes beside the berries.", "Enjoy immediately!"]
+            },
+            "margherita-pizza": {
+                title: "Margherita Pizza",
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80",
+                time: "25 min",
+                category: "Lunch",
+                serves: "Serves 3",
+                ingredients: ["1 pizza dough", "1/2 cup pizza sauce", "8 oz fresh mozzarella, sliced", "Fresh basil leaves", "2 tbsp olive oil", "Salt and pepper to taste"],
+                instructions: ["Preheat your oven to 475°F (245°C) with a pizza stone if available.", "Roll out the pizza dough on a floured surface.", "Spread the pizza sauce evenly over the dough.", "Distribute the fresh mozzarella slices.", "Bake for 10-12 minutes until the crust is golden and cheese is bubbly.", "Top with fresh basil and a drizzle of olive oil before slicing."]
+            },
+            "baked-salmon": {
+                title: "Oven Baked Salmon",
+                image: "https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=1200&q=80",
+                time: "20 min",
+                category: "Dinner",
+                serves: "Serves 2",
+                ingredients: ["2 salmon fillets", "1 lemon, sliced", "2 cloves garlic, minced", "1 tbsp olive oil", "1 tsp dried dill", "Salt and pepper", "Asparagus (optional side)"],
+                instructions: ["Preheat oven to 400°F (200°C).", "Place salmon fillets on a parchment-lined baking sheet.", "Rub salmon with olive oil, minced garlic, dill, salt, and pepper.", "Top each fillet with lemon slices.", "Bake for 12-15 minutes, until the salmon flakes easily with a fork.", "Serve hot with asparagus or your favorite side."]
+            },
+            "tikka-masala": {
+                title: "Chicken Tikka Masala",
+                image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
+                time: "50 min",
+                category: "Dinner",
+                serves: "Serves 4",
+                ingredients: ["1.5 lbs chicken breast, cubed", "1 cup plain yogurt", "2 tbsp garam masala", "1 onion, diced", "3 cloves garlic, minced", "1 can (14 oz) crushed tomatoes", "1/2 cup heavy cream"],
+                instructions: ["Marinate chicken in yogurt and 1 tbsp garam masala for at least 30 minutes.", "Brown the chicken pieces in a large skillet, then remove and set aside.", "In the same skillet, sauté onion and garlic until soft.", "Stir in tomatoes, remaining garam masala, and simmer for 15 minutes.", "Stir in the heavy cream and return chicken to the skillet.", "Simmer for another 10 minutes. Serve over rice with naan."]
+            },
+            "beef-burger": {
+                title: "Classic Beef Burger",
+                image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80",
+                time: "30 min",
+                category: "Lunch",
+                serves: "Serves 2",
+                ingredients: ["1 lb ground beef (80/20)", "2 hamburger buns", "2 slices cheddar cheese", "Lettuce leaves", "Tomato slices", "Red onion rings", "Ketchup and mayo"],
+                instructions: ["Form the ground beef into two patties. Season generously with salt and pepper.", "Heat a grill or cast-iron skillet over medium-high heat.", "Cook patties for about 4-5 minutes per side for medium doneness.", "Place a slice of cheese on each patty during the last minute of cooking.", "Toast the buns on the grill or skillet until golden.", "Assemble the burgers with lettuce, tomato, onion, patties, and condiments."]
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        let recipeId = urlParams.get('id');
+
+        // Verify recipe exists, fallback to avocado-toast
+        if (!recipeId || !recipesData[recipeId]) {
+            recipeId = "avocado-toast";
+        }
+
+        const recipe = recipesData[recipeId];
+
+        // Update DOM elements
+        document.title = recipe.title + " - Recipe Book";
+
+        const heroImg = document.querySelector('.recipe-hero');
+        if (heroImg) {
+            heroImg.src = recipe.image;
+            heroImg.alt = recipe.title;
+        }
+
+        const titleH1 = document.querySelector('.recipe-header-info h1');
+        if (titleH1) titleH1.innerText = recipe.title;
+
+        // Stats updates
+        const stats = document.querySelectorAll('.recipe-stats div');
+        if (stats.length >= 3) {
+            stats[0].innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ' + recipe.time;
+            stats[1].innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13v-3a7 7 0 0 1 14 0v3a7 7 0 0 1-7 7z"></path><path d="M11 4v4"></path></svg> ' + recipe.category;
+            stats[2].innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> ' + recipe.serves;
+        }
+
+        // Ingredients
+        const ingredientsList = document.querySelector('.ingredients-list');
+        if (ingredientsList) {
+            ingredientsList.innerHTML = '';
+            recipe.ingredients.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient;
+                ingredientsList.appendChild(li);
+            });
+        }
+
+        // Instructions
+        const instructionsList = document.querySelector('.instructions-list');
+        if (instructionsList) {
+            instructionsList.innerHTML = '';
+            recipe.instructions.forEach(instruction => {
+                const li = document.createElement('li');
+                li.innerHTML = instruction; // using innerHTML to allow <strong>
+                instructionsList.appendChild(li);
+            });
+        }
+        /*post comment section*/
+
         function addComment() {
 
             const commentText = document.querySelector(".comment-section textarea").value;
